@@ -10,7 +10,7 @@ class ChangePriorityAction
 {
     use AsAction;
 
-    public function handle(Call $random_low_call): void
+    public function handle($random_low_call): void
     {
         if ($random_low_call) {
             $temp_data = $random_low_call->toArray();
