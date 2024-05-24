@@ -80,7 +80,7 @@ php artisan migrate
 ### Testing 🧪
 To run the provided unit tests:
 ```shell
-./vendor/bin/phpunit --testdox
+php artisan test
 ```
 
 ### Starting the project
