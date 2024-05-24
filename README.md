@@ -1,66 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Fire Station Problem 🚒👩🏻‍🚒📞
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+this project is a CLI Simulation of a fire station, where there is incoming calls that are handles by the suitable employee according to the call priority.
 
-## About Laravel
+## Technologies used 
+this project was achieved using the **Laravel** Framework while leveraging laravel command through the implementation of Laravel **Actions**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Folder Structure 📁
+in the `app` directory there are the following folders:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- `Actions`: which has all of our logic
+- `Models`: which has our `Call` and `Employee` models
+- `Enums`: Which has our `CallPriority` and `EmploymentLevel` enums
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Data Base Structure 🗃️
+To implement the project I needed to create two tables:
+### Calls 📞
+```
+ +--------------+-------------------+-------------------------------------------+
+ |  Column Name |   Column Type     |   Description                             |
+ +--------------+-------------------+-------------------------------------------+
+ |  id          |   Primary Key     |   the identifier of the call              |
+ |  name        |   varchar         |   Name of the caller                      |
+ |  priority    |   enum(low,high)  |   the priority of the call                |
+ |  duration    |   integer         |   the duration that the call will take    |
+ +--------------+-------------------+-------------------------------------------+
+```
+### Employees 👩🏻‍🚒
+```
+ +--------------+-------------------+-------------------------------------------+
+ |  Column Name |   Column Type     |   Description                             |
+ +--------------+-------------------+-------------------------------------------+
+ |  id          |   Primary Key     |   the identifier of the call              |
+ |              |                   |                                           |
+ |  name        |   varchar         |   Name of the caller                      |
+ |              |                   |                                           |
+ |  level       |   enum            |   the level of the employee               |
+ |              |                   |   it contains the values (1 -> 4)         |
+ |              |                   |   from junior -> director                 |
+ |              |                   |                                           |
+ |  duration    |   integer         |   the duration that the call will take    |
+ |              |                   |                                           |
+ |  call_id     |   Foriegn Key     |   the id of the call that the employee is |
+ |              |                   |   currently handling, it is a nullable    |
+ |              |                   |   and it indicates that the employee is   |
+ |              |                   |   free when null and busy when not null   |
+ +--------------+-------------------+-------------------------------------------+
+```
+<br>
 
-## Learning Laravel
+> _I
+made the level enum has numeric values to make the code to resolve which employee should handle the call more performant, this way I can get the free employees ordered by their level, makes resolving the suitable employee to take the call be achieved through only one database call._
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## How to run the project 🚀
+assuming you already have the php environment setup, including Xammp and Composer:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+first clone the project
+```shell
+git clone https://github.com/Huda-sh/fire-station.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+navigate to the project root directory:
+```shell
+cd fire-station
+```
 
-## Laravel Sponsors
+install the dependencies:
+```shell
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+run the database migrations:
+```shell
+php artisan migrate
+```
 
-### Premium Partners
+### Running the test 🧪
+to run the supplied tests for the project, in the root directory of the project run the following command:
+```shell
+./vendor/bin/phpunit --testdox
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Starting the project
 
-## Contributing
+_I have supplied a json file at the root of the project that contains the data of the employees, feel free to change the data in the file but without changing the json structure._
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+there are two commands to use when running the project:
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. one for dispatching new calls every second
+```shell
+php artisan call:dispatch
+```
+2. another one for displaying the simulation and the updates:
+```shell
+php artisan call:simulate
+```
+I recommend to open both commands in separate windows to have a more clear experience.

@@ -1,0 +1,52 @@
+[
+    {
+        "id" : 1,
+        "name" : "John",
+        "level" : "4"
+    },
+    {
+        "id" : 2,
+        "name" : "Sarah",
+        "level" : "4"
+    },
+    {
+        "id" : 3,
+        "name" : "Michael",
+        "level" : "3"
+    },
+    {
+        "id" : 4,
+        "name" : "Emma",
+        "level" : "3"
+    },
+    {
+        "id" : 5,
+        "name" : "David",
+        "level" : "2"
+    },
+    {
+        "id" : 6,
+        "name" : "Emily",
+        "level" : "2"
+    },
+    {
+        "id" : 7,
+        "name" : "Daniel",
+        "level" : "2"
+    },
+    {
+        "id" : 8,
+        "name" : "Sophia",
+        "level" : "1"
+    },
+    {
+        "id" : 9,
+        "name" : "James",
+        "level" : "1"
+    },
+    {
+        "id" : 10,
+        "name" : "Olivia",
+        "level" : "1"
+    }
+]

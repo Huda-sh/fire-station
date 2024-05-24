@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Employee;
+use App\Queues\HighPriorityQueue;
+use App\Queues\LowPriorityQueue;
 use Illuminate\Support\ServiceProvider;
+use Lorisleiva\Actions\Facades\Actions;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
     }
 
     /**
@@ -19,6 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Actions::registerCommands();
     }
 }
