@@ -1,6 +1,6 @@
 # Fire Station Problem 🚒👩🏻‍🚒📞
 
-this project is a CLI Simulation of a fire station, where there is incoming calls that are handles by the suitable employee according to the call priority.
+This project simulates a fire station through a Command-Line Interface (CLI). It features incoming calls with varying priorities, and employees with different levels of experience who handle calls based on their urgency.
 
 ## Technologies used 
 this project was achieved using the **Laravel** Framework while leveraging laravel command through the implementation of Laravel **Actions**.
@@ -13,7 +13,8 @@ in the `app` directory there are the following folders:
 - `Enums`: Which has our `CallPriority` and `EmploymentLevel` enums
 
 ## Data Base Structure 🗃️
-To implement the project I needed to create two tables:
+The project uses two database tables:
+
 ### Calls 📞
 ```
  +--------------+-------------------+-------------------------------------------+
@@ -48,50 +49,53 @@ To implement the project I needed to create two tables:
 ```
 <br>
 
-> _I
+> _Using numeric values for the level enum improves efficiency. I
 made the level enum has numeric values to make the code to resolve which employee should handle the call more performant, this way I can get the free employees ordered by their level, makes resolving the suitable employee to take the call be achieved through only one database call._
 
-## How to run the project 🚀
-assuming you already have the php environment setup, including Xammp and Composer:
+## Running the Project 🚀
+### Prerequisites
 
-first clone the project
+PHP environment with Xampp and Composer installed
+
+### Steps
+1. Clone the Project:
 ```shell
 git clone https://github.com/Huda-sh/fire-station.git
 ```
 
-navigate to the project root directory:
+2. Navigate to Project Directory:
 ```shell
 cd fire-station
 ```
 
-install the dependencies:
+3. Install Dependencies:
 ```shell
 composer install
 ```
 
-run the database migrations:
+4. Run Database Migrations:
 ```shell
 php artisan migrate
 ```
 
-### Running the test 🧪
-to run the supplied tests for the project, in the root directory of the project run the following command:
+### Testing 🧪
+To run the provided unit tests:
 ```shell
 ./vendor/bin/phpunit --testdox
 ```
 
 ### Starting the project
 
-_I have supplied a json file at the root of the project that contains the data of the employees, feel free to change the data in the file but without changing the json structure._
+_A sample JSON file containing employee data is included in the project root. You can modify the data within the file **(without changing the JSON structure).**_
 
-there are two commands to use when running the project:
+The project provides two commands:
 
-1. one for dispatching new calls every second
+1. **Dispatch Calls (every second):**
 ```shell
 php artisan call:dispatch
 ```
-2. another one for displaying the simulation and the updates:
+2. **Simulate and Display Updates:**
 ```shell
 php artisan call:simulate
 ```
-I recommend to open both commands in separate windows to have a more clear experience.
+**Recommendation:** Run both commands in separate terminal windows for a clearer experience.
