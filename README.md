@@ -49,8 +49,7 @@ The project uses two database tables:
 ```
 <br>
 
-> _Using numeric values for the level enum improves efficiency. I
-made the level enum has numeric values to make the code to resolve which employee should handle the call more performant, this way I can get the free employees ordered by their level, makes resolving the suitable employee to take the call be achieved through only one database call._
+> _Using numeric values for the employee level enum improves efficiency in assigning calls. By assigning numerical values to the levels in the enum, I can efficiently sort available employees based on their level. This allows me to identify the most suitable free employee with a single database call to retrieve sorted employees._
 
 ## Running the Project 🚀
 ### Prerequisites
